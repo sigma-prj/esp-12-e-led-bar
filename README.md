@@ -22,6 +22,119 @@ In case of application needs to be flashed into ESP chip - the corresponding GPI
 and in order to run application this pin needs to be pulled up.
 Switch between GPIO 0 'pull up' and 'pull down' state can be done using single jumper placed to JMPR_EXEC either to JMPR_FLASH connector.
 
+Sample Application for PCB Testing
+-----------------------------
+
+Once schema is assembled the following sample application can be used to test PCB.
+This will try to ignite all LEDs sequentially, one-by-one.
+This way, the application below can show whether Shift register is operating properly.
+
+```c++
+
+#include <osapi.h>
+#include <user_interface.h>
+#include <gpio.h>
+
+#define LED_COUNT        8
+
+#define SYSTEM_PARTITION_RF_CAL_SZ    0x1000
+#define SYSTEM_PARTITION_PHY_DATA_SZ   0x1000
+#define SYSTEM_PARTITION_SYSTEM_PARAMETER_SZ 0x3000
+#define SYSTEM_SPI_SIZE       0x400000
+#define SYSTEM_PARTITION_RF_CAL_ADDR   0x3FB000
+#define SYSTEM_PARTITION_PHY_DATA_ADDR   0x3FC000
+#define SYSTEM_PARTITION_SYSTEM_PARAMETER_ADDR 0x3FE000
+
+// ESP pin connected to Shift Register 'SERIAL DATA' line
+static const uint16 GPIO_PIN_SER_DATA = 4;
+// ESP pin connected to Shift Register 'SERIAL CLOCK' line
+static const uint16 GPIO_PIN_SER_CLOCK = 5;
+// ESP pin connected to Shift Register 'READ LATCH' line
+static const uint16 GPIO_PIN_READ_LATCH = 12;
+// ESP internal LED pin number
+static const uint16 GPIO_PIN_LED  = 2;
+
+static const uint32 TIMER_IDX_RESET  = 1000000000;
+
+// Delay in microseconds between Shift Register clock signals
+static const uint16 DELAY_SHIFT_REG  = 50;
+
+// This timer is used to update LED bar status
+static os_timer_t start_timer;
+// Initial timer tick value
+static uint32 tick_index = 0L;
+
+static const partition_item_t part_table[] =
+{
+ { SYSTEM_PARTITION_RF_CAL,    SYSTEM_PARTITION_RF_CAL_ADDR,   SYSTEM_PARTITION_RF_CAL_SZ    },
+ { SYSTEM_PARTITION_PHY_DATA,   SYSTEM_PARTITION_PHY_DATA_ADDR,   SYSTEM_PARTITION_PHY_DATA_SZ   },
+ { SYSTEM_PARTITION_SYSTEM_PARAMETER, SYSTEM_PARTITION_SYSTEM_PARAMETER_ADDR, SYSTEM_PARTITION_SYSTEM_PARAMETER_SZ }
+};
+
+// ############################# LED BAR - DISPLAY LEVEL  #############################
+
+static void show_level(uint16 level)
+{
+ uint16 i;
+ for (i = 0; i < LED_COUNT; ++i)
+ {
+  GPIO_OUTPUT_SET(GPIO_PIN_SER_DATA, (i < level));
+  os_delay_us(DELAY_SHIFT_REG);
+  GPIO_OUTPUT_SET(GPIO_PIN_SER_CLOCK, 1);
+  os_delay_us(DELAY_SHIFT_REG);
+  GPIO_OUTPUT_SET(GPIO_PIN_SER_CLOCK, 0);
+  os_delay_us(DELAY_SHIFT_REG);
+ }
+ GPIO_OUTPUT_SET(GPIO_PIN_READ_LATCH, 1);
+ os_delay_us(DELAY_SHIFT_REG);
+ GPIO_OUTPUT_SET(GPIO_PIN_READ_LATCH, 0);
+ os_delay_us(DELAY_SHIFT_REG);
+}
+
+// ################ APPLICATION MAIN LOOP METHOD (TRIGGERED EACH SECOND) ################
+
+void main_timer_handler(void* arg)
+{
+ show_level(tick_index % (LED_COUNT + 1));
+ ++tick_index;
+ if (tick_index >= TIMER_IDX_RESET)
+ {
+  tick_index = 0;
+ }
+}
+
+// ####################### APPLICATION MAIN INIT METHODS ################################
+
+void ICACHE_FLASH_ATTR user_pre_init(void)
+{
+ system_partition_table_regist(part_table, 3, SPI_FLASH_SIZE_MAP);
+}
+
+void on_user_init_completed(void)
+{
+ // Timer setup to trigger each second
+ os_timer_setfn(&start_timer, (os_timer_func_t*)main_timer_handler, NULL);
+ os_timer_arm(&start_timer, 1000, 1);
+}
+
+void ICACHE_FLASH_ATTR user_init(void)
+{
+ gpio_init();
+ // ESP pin modes initialization
+ PIN_FUNC_SELECT(PERIPHS_IO_MUX_GPIO2_U, FUNC_GPIO2);
+ PIN_FUNC_SELECT(PERIPHS_IO_MUX_GPIO4_U, FUNC_GPIO4);
+ PIN_FUNC_SELECT(PERIPHS_IO_MUX_GPIO5_U, FUNC_GPIO5);
+ PIN_FUNC_SELECT(PERIPHS_IO_MUX_MTDI_U, FUNC_GPIO12);
+ // ESP pin values initialization
+ GPIO_OUTPUT_SET(GPIO_PIN_LED, 0);
+ GPIO_OUTPUT_SET(GPIO_PIN_SER_DATA, 0);
+ GPIO_OUTPUT_SET(GPIO_PIN_SER_CLOCK, 0);
+ GPIO_OUTPUT_SET(GPIO_PIN_READ_LATCH, 0);
+ system_init_done_cb(on_user_init_completed);
+}
+
+```
+
 License
 -----------------------------
 
