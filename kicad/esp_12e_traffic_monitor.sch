@@ -1,0 +1,1177 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "ESP-12-E MOD TRAFFIC MONITOR"
+Date "2021-05-29"
+Rev "C"
+Comp "SIGMAPRJ.COM"
+Comment1 ""
+Comment2 "https://creativecommons.org/licenses/by/4.0/"
+Comment3 "License: Attribution 4.0 International (CC BY 4.0)"
+Comment4 "Author: SIGMAPRJ.COM"
+$EndDescr
+$Comp
+L RF_Module:ESP-12E U2
+U 1 1 5E1A1A61
+P 7200 2200
+F 0 "U2" H 6950 3000 50  0000 C CNN
+F 1 "ESP-12E" H 7450 3000 50  0000 C CNN
+F 2 "RF_Module:ESP-12E" H 7200 2200 50  0001 C CNN
+F 3 "http://wiki.ai-thinker.com/_media/esp8266/esp8266_series_modules_user_manual_v1.1.pdf" H 6850 2300 50  0001 C CNN
+	1    7200 2200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Regulator_Linear:AMS1117-3.3 U1
+U 1 1 5E1A1B49
+P 5000 1300
+F 0 "U1" H 5000 1542 50  0000 C CNN
+F 1 "AMS1117-3.3" H 5000 1451 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-223-3_TabPin2" H 5000 1500 50  0001 C CNN
+F 3 "http://www.advanced-monolithic.com/pdf/ds1117.pdf" H 5100 1050 50  0001 C CNN
+	1    5000 1300
+	1    0    0    -1  
+$EndComp
+$Comp
+L dk_USB-DVI-HDMI-Connectors:1050170001 J3
+U 1 1 5E1A1F31
+P 2800 2400
+F 0 "J3" H 2800 3050 50  0000 C CNN
+F 1 "MICRO USB B" V 2500 2400 50  0000 C CNN
+F 2 "custom_footprints:USB_Micro-B_Custom" H 3000 2600 60  0001 L CNN
+F 3 "https://www.molex.com/pdm_docs/sd/1050170001_sd.pdf" H 3000 2700 60  0001 L CNN
+F 4 "WM1399CT-ND" H 3000 2800 60  0001 L CNN "Digi-Key_PN"
+F 5 "1050170001" H 3000 2900 60  0001 L CNN "MPN"
+F 6 "Connectors, Interconnects" H 3000 3000 60  0001 L CNN "Category"
+F 7 "USB, DVI, HDMI Connectors" H 3000 3100 60  0001 L CNN "Family"
+F 8 "https://www.molex.com/pdm_docs/sd/1050170001_sd.pdf" H 3000 3200 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/molex/1050170001/WM1399CT-ND/2350885" H 3000 3300 60  0001 L CNN "DK_Detail_Page"
+F 10 "CONN RCPT USB2.0 MICRO B SMD R/A" H 3000 3400 60  0001 L CNN "Description"
+F 11 "Molex" H 3000 3500 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 3000 3600 60  0001 L CNN "Status"
+	1    2800 2400
+	1    0    0    -1  
+$EndComp
+NoConn ~ 3100 2500
+NoConn ~ 3100 2400
+NoConn ~ 3100 2300
+NoConn ~ 2700 3000
+$Comp
+L power:+5V #PWR01
+U 1 1 5E1A30EB
+P 4550 1200
+F 0 "#PWR01" H 4550 1050 20  0001 C CNN
+F 1 "+5V" H 4565 1373 50  0000 C CNN
+F 2 "" H 4550 1200 50  0001 C CNN
+F 3 "" H 4550 1200 50  0001 C CNN
+	1    4550 1200
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR03
+U 1 1 5E1A369B
+P 5000 1750
+F 0 "#PWR03" H 5000 1500 50  0001 C CNN
+F 1 "GND" H 5005 1577 50  0000 C CNN
+F 2 "" H 5000 1750 50  0001 C CNN
+F 3 "" H 5000 1750 50  0001 C CNN
+	1    5000 1750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5000 1600 5000 1650
+Wire Wire Line
+	3500 1650 3500 2600
+$Comp
+L Device:C C2
+U 1 1 5E1A49B5
+P 4550 1500
+F 0 "C2" H 4665 1546 50  0000 L CNN
+F 1 "0.1uF" H 4665 1455 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 4588 1350 50  0001 C CNN
+F 3 "~" H 4550 1500 50  0001 C CNN
+	1    4550 1500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C1
+U 1 1 5E1A4A5D
+P 4100 1500
+F 0 "C1" H 4215 1546 50  0000 L CNN
+F 1 "10uF" H 4215 1455 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 4138 1350 50  0001 C CNN
+F 3 "~" H 4100 1500 50  0001 C CNN
+	1    4100 1500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3500 1650 4100 1650
+Wire Wire Line
+	4100 1300 4100 1350
+Wire Wire Line
+	3400 1300 3400 2200
+Connection ~ 5000 1650
+Wire Wire Line
+	3100 2600 3200 2600
+Wire Wire Line
+	3100 2200 3200 2200
+$Comp
+L Device:C C3
+U 1 1 5E1A5B7C
+P 5450 1500
+F 0 "C3" H 5565 1546 50  0000 L CNN
+F 1 "10uF" H 5565 1455 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 5488 1350 50  0001 C CNN
+F 3 "~" H 5450 1500 50  0001 C CNN
+	1    5450 1500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C4
+U 1 1 5E1A5C16
+P 5850 1500
+F 0 "C4" H 5965 1546 50  0000 L CNN
+F 1 "0.1uF" H 5965 1455 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 5888 1350 50  0001 C CNN
+F 3 "~" H 5850 1500 50  0001 C CNN
+	1    5850 1500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7200 1300 7200 1400
+Wire Wire Line
+	3400 1300 4100 1300
+Connection ~ 5450 1650
+Wire Wire Line
+	5300 1300 5450 1300
+Wire Wire Line
+	5000 1650 5450 1650
+Wire Wire Line
+	5450 1650 5850 1650
+Wire Wire Line
+	5850 1350 5850 1300
+Connection ~ 5850 1300
+Wire Wire Line
+	5850 1300 6200 1300
+Wire Wire Line
+	5450 1350 5450 1300
+Connection ~ 5450 1300
+Wire Wire Line
+	5450 1300 5850 1300
+$Comp
+L power:+3V3 #PWR02
+U 1 1 5E1A86A7
+P 5450 1200
+F 0 "#PWR02" H 5450 1050 50  0001 C CNN
+F 1 "+3V3" H 5465 1373 50  0000 C CNN
+F 2 "" H 5450 1200 50  0001 C CNN
+F 3 "" H 5450 1200 50  0001 C CNN
+	1    5450 1200
+	1    0    0    -1  
+$EndComp
+Connection ~ 6200 1300
+Wire Wire Line
+	6200 1300 7200 1300
+NoConn ~ 6600 2000
+NoConn ~ 6600 2200
+NoConn ~ 6600 2300
+Wire Wire Line
+	6200 2250 5000 2250
+Text GLabel 6500 1600 0    50   Input ~ 0
+~RST
+Wire Wire Line
+	6500 1600 6600 1600
+Text GLabel 4900 2650 0    50   Input ~ 0
+~RST
+$Comp
+L Device:R R4
+U 1 1 5E1ACE17
+P 5000 2450
+F 0 "R4" V 5000 2450 50  0000 C CNN
+F 1 "12K" V 4910 2450 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 4930 2450 50  0001 C CNN
+F 3 "~" H 5000 2450 50  0001 C CNN
+	1    5000 2450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5000 2300 5000 2250
+$Comp
+L Device:C C5
+U 1 1 5E1AD490
+P 5000 2850
+F 0 "C5" H 5115 2896 50  0000 L CNN
+F 1 "100nF" H 5115 2805 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 5038 2700 50  0001 C CNN
+F 3 "~" H 5000 2850 50  0001 C CNN
+	1    5000 2850
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR04
+U 1 1 5E1ADA08
+P 7200 3160
+F 0 "#PWR04" H 7200 2910 50  0001 C CNN
+F 1 "GND" H 7205 2987 50  0000 C CNN
+F 2 "" H 7200 3160 50  0001 C CNN
+F 3 "" H 7200 3160 50  0001 C CNN
+	1    7200 3160
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6200 1300 6200 2250
+Text GLabel 6500 1800 0    50   Input ~ 0
+EN
+Wire Wire Line
+	6500 1800 6600 1800
+Text GLabel 4450 2650 0    50   Input ~ 0
+EN
+$Comp
+L Device:R R3
+U 1 1 5E1AF0EC
+P 4550 2450
+F 0 "R3" V 4550 2450 50  0000 C CNN
+F 1 "12K" V 4460 2450 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 4480 2450 50  0001 C CNN
+F 3 "~" H 4550 2450 50  0001 C CNN
+	1    4550 2450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4450 2650 4550 2650
+Wire Wire Line
+	4550 2650 4550 2600
+Wire Wire Line
+	4550 2250 5000 2250
+Wire Wire Line
+	4550 2300 4550 2250
+Connection ~ 5000 2250
+NoConn ~ 6600 2400
+NoConn ~ 6600 2500
+NoConn ~ 6600 2600
+NoConn ~ 6600 2700
+Wire Wire Line
+	5000 2600 5000 2650
+Wire Wire Line
+	4900 2650 5000 2650
+Connection ~ 5000 2650
+Wire Wire Line
+	5000 2650 5000 2700
+Wire Wire Line
+	5700 2650 5700 3050
+Wire Wire Line
+	5000 3050 5700 3050
+Wire Wire Line
+	5000 3000 5000 3050
+$Comp
+L Switch:SW_Push SW1
+U 1 1 5E1B90C2
+P 5350 2650
+F 0 "SW1" H 5350 2935 50  0000 C CNN
+F 1 "RESET" H 5350 2844 50  0000 C CNN
+F 2 "Button_Switch_THT:SW_PUSH-12mm" H 5350 2850 50  0001 C CNN
+F 3 "" H 5350 2850 50  0001 C CNN
+	1    5350 2650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5000 2650 5150 2650
+Wire Wire Line
+	5550 2650 5700 2650
+Connection ~ 5700 3050
+$Comp
+L Connector_Generic:Conn_01x02 J4
+U 1 1 5E1A8370
+P 8500 2650
+F 0 "J4" H 8579 2642 50  0000 L CNN
+F 1 "JMPR_FLASH" H 8579 2551 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 8500 2650 50  0001 C CNN
+F 3 "~" H 8500 2650 50  0001 C CNN
+	1    8500 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x02 J1
+U 1 1 5E1A8588
+P 8500 1500
+F 0 "J1" H 8580 1492 50  0000 L CNN
+F 1 "JMPR_EXEC" H 8580 1401 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 8500 1500 50  0001 C CNN
+F 3 "~" H 8500 1500 50  0001 C CNN
+	1    8500 1500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R1
+U 1 1 5E1AAFFD
+P 8050 1600
+F 0 "R1" V 8050 1600 50  0000 C CNN
+F 1 "12K" V 7960 1600 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 7980 1600 50  0001 C CNN
+F 3 "~" H 8050 1600 50  0001 C CNN
+	1    8050 1600
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7800 1600 7900 1600
+Wire Wire Line
+	8200 1600 8250 1600
+$Comp
+L Connector_Generic:Conn_01x03 J2
+U 1 1 5E1AC86E
+P 9300 1800
+F 0 "J2" H 9380 1842 50  0000 L CNN
+F 1 "CONN_UART_3V3" H 9380 1751 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 9300 1800 50  0001 C CNN
+F 3 "~" H 9300 1800 50  0001 C CNN
+	1    9300 1800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9100 1700 7800 1700
+Wire Wire Line
+	9100 1800 8450 1800
+Wire Wire Line
+	8450 1800 8450 1900
+Wire Wire Line
+	8450 1900 7800 1900
+Wire Wire Line
+	9100 1900 9100 3050
+Wire Wire Line
+	8300 1500 8250 1500
+Wire Wire Line
+	8250 1500 8250 1300
+Wire Wire Line
+	8250 1300 7200 1300
+Connection ~ 7200 1300
+Wire Wire Line
+	8250 1600 8250 2650
+Wire Wire Line
+	8250 2650 8300 2650
+Connection ~ 8250 1600
+Wire Wire Line
+	8250 1600 8300 1600
+Wire Wire Line
+	8300 2750 8250 2750
+Wire Wire Line
+	8250 2750 8250 3050
+Connection ~ 8250 3050
+Wire Wire Line
+	8250 3050 9100 3050
+Text GLabel 7900 1800 2    50   Input ~ 0
+GPIO2
+Wire Wire Line
+	7900 1800 7800 1800
+Text GLabel 4000 2650 0    50   Input ~ 0
+GPIO2
+Wire Wire Line
+	4000 2650 4100 2650
+Wire Wire Line
+	4100 2650 4100 2600
+Wire Wire Line
+	4100 2250 4550 2250
+Connection ~ 4550 2250
+$Comp
+L Device:R R2
+U 1 1 5E1BE8EF
+P 4100 2450
+F 0 "R2" V 4100 2450 50  0000 C CNN
+F 1 "12K" V 4010 2450 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 4030 2450 50  0001 C CNN
+F 3 "~" H 4100 2450 50  0001 C CNN
+	1    4100 2450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4100 2300 4100 2250
+Wire Wire Line
+	4100 1300 4550 1300
+Connection ~ 4100 1300
+Connection ~ 4550 1300
+Wire Wire Line
+	4550 1300 4550 1350
+Wire Wire Line
+	4550 1300 4700 1300
+Wire Wire Line
+	4100 1650 4550 1650
+Connection ~ 4100 1650
+Wire Wire Line
+	4550 1650 5000 1650
+Connection ~ 4550 1650
+$Comp
+L Device:R R5
+U 1 1 5E1D73F9
+P 8000 2750
+F 0 "R5" V 8000 2750 50  0000 C CNN
+F 1 "12K" V 7910 2750 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 7930 2750 50  0001 C CNN
+F 3 "~" H 8000 2750 50  0001 C CNN
+	1    8000 2750
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7800 2500 8000 2500
+Wire Wire Line
+	8000 2500 8000 2600
+Wire Wire Line
+	8000 2900 8000 3050
+Connection ~ 8000 3050
+Wire Wire Line
+	8000 3050 8250 3050
+NoConn ~ 7800 2400
+NoConn ~ 7800 2600
+$Comp
+L power:PWR_FLAG #FLG02
+U 1 1 5E1E6828
+P 3200 2600
+F 0 "#FLG02" H 3200 2675 50  0001 C CNN
+F 1 "PWR_FLAG" H 3200 2773 50  0000 C CNN
+F 2 "" H 3200 2600 50  0001 C CNN
+F 3 "~" H 3200 2600 50  0001 C CNN
+	1    3200 2600
+	-1   0    0    1   
+$EndComp
+Connection ~ 3200 2600
+Wire Wire Line
+	3200 2600 3500 2600
+$Comp
+L power:PWR_FLAG #FLG01
+U 1 1 5E1E7E24
+P 3200 2200
+F 0 "#FLG01" H 3200 2275 50  0001 C CNN
+F 1 "PWR_FLAG" H 3200 2374 50  0000 C CNN
+F 2 "" H 3200 2200 50  0001 C CNN
+F 3 "~" H 3200 2200 50  0001 C CNN
+	1    3200 2200
+	1    0    0    -1  
+$EndComp
+Connection ~ 3200 2200
+Wire Wire Line
+	3200 2200 3400 2200
+$Comp
+L 74xx:74HC595 U3
+U 1 1 5E1EFFBE
+P 3290 4310
+F 0 "U3" H 3115 4885 50  0000 C CNN
+F 1 "74HC595" H 3490 4885 50  0000 C CNN
+F 2 "digikey-footprints:SOIC-16_W3.90mm" H 3290 4310 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/sn74hc595.pdf" H 3290 4310 50  0001 C CNN
+	1    3290 4310
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR05
+U 1 1 5E1F0564
+P 3290 3610
+F 0 "#PWR05" H 3290 3460 50  0001 C CNN
+F 1 "+3V3" H 3305 3783 50  0000 C CNN
+F 2 "" H 3290 3610 50  0001 C CNN
+F 3 "" H 3290 3610 50  0001 C CNN
+	1    3290 3610
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3290 3710 3290 3660
+Wire Wire Line
+	4550 1200 4550 1300
+Wire Wire Line
+	5450 1200 5450 1300
+Wire Wire Line
+	5000 1650 5000 1750
+$Comp
+L power:GND #PWR07
+U 1 1 5E1F63C0
+P 3290 5110
+F 0 "#PWR07" H 3290 4860 50  0001 C CNN
+F 1 "GND" H 3295 4937 50  0000 C CNN
+F 2 "" H 3290 5110 50  0001 C CNN
+F 3 "" H 3290 5110 50  0001 C CNN
+	1    3290 5110
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3290 5010 3290 5060
+Wire Wire Line
+	3290 5060 2440 5060
+Wire Wire Line
+	2440 5060 2440 4510
+Wire Wire Line
+	2440 4510 2890 4510
+Connection ~ 3290 5060
+Wire Wire Line
+	3290 5060 3290 5110
+Text GLabel 7900 2000 2    50   Input ~ 0
+GPIO4
+Text GLabel 7900 2100 2    50   Input ~ 0
+GPIO5
+Text GLabel 7900 2200 2    50   Input ~ 0
+GPIO12
+Wire Wire Line
+	7800 2000 7900 2000
+Wire Wire Line
+	7800 2100 7900 2100
+Wire Wire Line
+	7800 2200 7900 2200
+Text GLabel 2790 3910 0    50   Input ~ 0
+GPIO4
+Text GLabel 2790 4110 0    50   Input ~ 0
+GPIO5
+Text GLabel 2790 4410 0    50   Input ~ 0
+GPIO12
+Wire Wire Line
+	2790 4410 2890 4410
+Wire Wire Line
+	2790 4110 2890 4110
+Wire Wire Line
+	2790 3910 2890 3910
+NoConn ~ 3690 4810
+Wire Wire Line
+	2890 4210 2440 4210
+Wire Wire Line
+	2440 4210 2440 3660
+Wire Wire Line
+	2440 3660 3290 3660
+Connection ~ 3290 3660
+Wire Wire Line
+	3290 3660 3290 3610
+NoConn ~ 7800 2300
+$Comp
+L Device:R R6
+U 1 1 5E2146DD
+P 3940 3910
+F 0 "R6" V 3940 3910 50  0000 C CNN
+F 1 "2K" V 3890 4085 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 3870 3910 50  0001 C CNN
+F 3 "~" H 3940 3910 50  0001 C CNN
+	1    3940 3910
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R7
+U 1 1 5E214B0A
+P 3940 4010
+F 0 "R7" V 3940 4010 50  0000 C CNN
+F 1 "2K" V 3890 4185 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 3870 4010 50  0001 C CNN
+F 3 "~" H 3940 4010 50  0001 C CNN
+	1    3940 4010
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R8
+U 1 1 5E214B6E
+P 3940 4110
+F 0 "R8" V 3940 4110 50  0000 C CNN
+F 1 "2K" V 3890 4285 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 3870 4110 50  0001 C CNN
+F 3 "~" H 3940 4110 50  0001 C CNN
+	1    3940 4110
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R9
+U 1 1 5E214BB0
+P 3940 4210
+F 0 "R9" V 3940 4210 50  0000 C CNN
+F 1 "2K" V 3890 4385 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 3870 4210 50  0001 C CNN
+F 3 "~" H 3940 4210 50  0001 C CNN
+	1    3940 4210
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R10
+U 1 1 5E214BF0
+P 3940 4310
+F 0 "R10" V 3940 4310 50  0000 C CNN
+F 1 "2K" V 3890 4485 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 3870 4310 50  0001 C CNN
+F 3 "~" H 3940 4310 50  0001 C CNN
+	1    3940 4310
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R19
+U 1 1 5E214C32
+P 3940 4410
+F 0 "R19" V 3940 4410 50  0000 C CNN
+F 1 "2K" V 3890 4585 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 3870 4410 50  0001 C CNN
+F 3 "~" H 3940 4410 50  0001 C CNN
+	1    3940 4410
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R20
+U 1 1 5E214C76
+P 3940 4510
+F 0 "R20" V 3940 4510 50  0000 C CNN
+F 1 "2K" V 3890 4685 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 3870 4510 50  0001 C CNN
+F 3 "~" H 3940 4510 50  0001 C CNN
+	1    3940 4510
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R21
+U 1 1 5E214CBC
+P 3940 4610
+F 0 "R21" V 3940 4610 50  0000 C CNN
+F 1 "2K" V 3890 4785 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 3870 4610 50  0001 C CNN
+F 3 "~" H 3940 4610 50  0001 C CNN
+	1    3940 4610
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3690 3910 3790 3910
+Wire Wire Line
+	3690 4010 3790 4010
+Wire Wire Line
+	3690 4110 3790 4110
+Wire Wire Line
+	3690 4210 3790 4210
+Wire Wire Line
+	3690 4310 3790 4310
+Wire Wire Line
+	3690 4410 3790 4410
+Wire Wire Line
+	3690 4510 3790 4510
+Wire Wire Line
+	3690 4610 3790 4610
+Text GLabel 4240 3910 2    50   Input ~ 0
+IND1
+Text GLabel 4240 4010 2    50   Input ~ 0
+IND2
+Text GLabel 4240 4110 2    50   Input ~ 0
+IND3
+Text GLabel 4240 4210 2    50   Input ~ 0
+IND4
+Text GLabel 4240 4310 2    50   Input ~ 0
+IND5
+Text GLabel 4240 4410 2    50   Input ~ 0
+IND6
+Text GLabel 4240 4510 2    50   Input ~ 0
+IND7
+Text GLabel 4240 4610 2    50   Input ~ 0
+IND8
+Wire Wire Line
+	4090 3910 4240 3910
+Wire Wire Line
+	4090 4010 4240 4010
+Wire Wire Line
+	4090 4110 4240 4110
+Wire Wire Line
+	4090 4210 4240 4210
+Wire Wire Line
+	4090 4310 4240 4310
+Wire Wire Line
+	4090 4410 4240 4410
+Wire Wire Line
+	4090 4510 4240 4510
+Wire Wire Line
+	4090 4610 4240 4610
+$Comp
+L dk_Transistors-Bipolar-BJT-Single:BC846B_215 Q1
+U 1 1 5E244A80
+P 5040 4810
+F 0 "Q1" H 4890 5010 60  0000 L CNN
+F 1 "PMBT3904" V 5265 4610 60  0000 L CNN
+F 2 "digikey-footprints:SOT-23-3" H 5240 5010 60  0001 L CNN
+F 3 "" H 5240 5110 60  0001 L CNN
+F 4 "PMBT3904,215" H 5240 5310 60  0001 L CNN "MPN"
+F 5 "Discrete Semiconductor Products" H 5240 5410 60  0001 L CNN "Category"
+F 6 "Transistors - Bipolar (BJT) - Single" H 5240 5510 60  0001 L CNN "Family"
+F 7 "TRANS NPN 40V 0.2A SOT23" H 5240 5810 60  0001 L CNN "Description"
+F 8 "Nexperia USA Inc." H 5240 5910 60  0001 L CNN "Manufacturer"
+F 9 "Active" H 5240 6010 60  0001 L CNN "Status"
+	1    5040 4810
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5140 5060 5140 5010
+Wire Wire Line
+	3290 5060 5140 5060
+$Comp
+L power:+5V #PWR06
+U 1 1 5E24FC1E
+P 5140 3610
+F 0 "#PWR06" H 5140 3460 20  0001 C CNN
+F 1 "+5V" H 5155 3783 50  0000 C CNN
+F 2 "" H 5140 3610 50  0001 C CNN
+F 3 "" H 5140 3610 50  0001 C CNN
+	1    5140 3610
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R11
+U 1 1 5E2538F4
+P 5140 4360
+F 0 "R11" V 5140 4360 50  0000 C CNN
+F 1 "150R" V 5015 4360 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 5070 4360 50  0001 C CNN
+F 3 "~" H 5140 4360 50  0001 C CNN
+	1    5140 4360
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D1
+U 1 1 5E253BC6
+P 5140 3960
+F 0 "D1" H 5190 4060 50  0000 R CNN
+F 1 "LED_RED" H 5240 3810 50  0000 R CNN
+F 2 "LED_SMD:LED_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 5140 3960 50  0001 C CNN
+F 3 "~" H 5140 3960 50  0001 C CNN
+	1    5140 3960
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5140 4510 5140 4610
+Wire Wire Line
+	5140 4110 5140 4210
+Text GLabel 4790 4710 1    50   Input ~ 0
+IND1
+Wire Wire Line
+	5140 3760 5140 3810
+Text GLabel 5440 4710 1    50   Input ~ 0
+IND2
+$Comp
+L dk_Transistors-Bipolar-BJT-Single:BC846B_215 Q2
+U 1 1 5E26CBE5
+P 5690 4810
+F 0 "Q2" H 5540 5010 60  0000 L CNN
+F 1 "PMBT3904" V 5915 4610 60  0000 L CNN
+F 2 "digikey-footprints:SOT-23-3" H 5890 5010 60  0001 L CNN
+F 3 "" H 5890 5110 60  0001 L CNN
+F 4 "PMBT3904,215" H 5890 5310 60  0001 L CNN "MPN"
+F 5 "Discrete Semiconductor Products" H 5890 5410 60  0001 L CNN "Category"
+F 6 "Transistors - Bipolar (BJT) - Single" H 5890 5510 60  0001 L CNN "Family"
+F 7 "TRANS NPN 40V 0.2A SOT23" H 5890 5810 60  0001 L CNN "Description"
+F 8 "Nexperia USA Inc." H 5890 5910 60  0001 L CNN "Manufacturer"
+F 9 "Active" H 5890 6010 60  0001 L CNN "Status"
+	1    5690 4810
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R12
+U 1 1 5E26CC59
+P 5790 4360
+F 0 "R12" V 5790 4360 50  0000 C CNN
+F 1 "150R" V 5665 4360 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 5720 4360 50  0001 C CNN
+F 3 "~" H 5790 4360 50  0001 C CNN
+	1    5790 4360
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D2
+U 1 1 5E26CD11
+P 5790 3960
+F 0 "D2" H 5840 4060 50  0000 R CNN
+F 1 "LED_RED" H 5890 3810 50  0000 R CNN
+F 2 "LED_SMD:LED_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 5790 3960 50  0001 C CNN
+F 3 "~" H 5790 3960 50  0001 C CNN
+	1    5790 3960
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5140 3760 5790 3760
+Wire Wire Line
+	5790 3760 5790 3810
+Connection ~ 5790 3760
+Wire Wire Line
+	5790 3760 6440 3760
+Wire Wire Line
+	5790 4110 5790 4210
+Wire Wire Line
+	5790 4510 5790 4610
+Wire Wire Line
+	5790 5010 5790 5060
+Wire Wire Line
+	5790 5060 5140 5060
+Connection ~ 5140 5060
+Wire Wire Line
+	4840 4810 4790 4810
+Wire Wire Line
+	4790 4810 4790 4710
+Wire Wire Line
+	5490 4810 5440 4810
+Wire Wire Line
+	5440 4810 5440 4710
+$Comp
+L dk_Transistors-Bipolar-BJT-Single:BC846B_215 Q3
+U 1 1 5E2AF1BE
+P 6340 4810
+F 0 "Q3" H 6190 5010 60  0000 L CNN
+F 1 "PMBT3904" V 6565 4610 60  0000 L CNN
+F 2 "digikey-footprints:SOT-23-3" H 6540 5010 60  0001 L CNN
+F 3 "" H 6540 5110 60  0001 L CNN
+F 4 "PMBT3904,215" H 6540 5310 60  0001 L CNN "MPN"
+F 5 "Discrete Semiconductor Products" H 6540 5410 60  0001 L CNN "Category"
+F 6 "Transistors - Bipolar (BJT) - Single" H 6540 5510 60  0001 L CNN "Family"
+F 7 "TRANS NPN 40V 0.2A SOT23" H 6540 5810 60  0001 L CNN "Description"
+F 8 "Nexperia USA Inc." H 6540 5910 60  0001 L CNN "Manufacturer"
+F 9 "Active" H 6540 6010 60  0001 L CNN "Status"
+	1    6340 4810
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R13
+U 1 1 5E2AF2A5
+P 6440 4360
+F 0 "R13" V 6440 4360 50  0000 C CNN
+F 1 "150R" V 6315 4360 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 6370 4360 50  0001 C CNN
+F 3 "~" H 6440 4360 50  0001 C CNN
+	1    6440 4360
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D3
+U 1 1 5E2AF30F
+P 6440 3960
+F 0 "D3" H 6490 4060 50  0000 R CNN
+F 1 "LED_YELLOW" H 6610 3810 50  0000 R CNN
+F 2 "LED_SMD:LED_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 6440 3960 50  0001 C CNN
+F 3 "~" H 6440 3960 50  0001 C CNN
+	1    6440 3960
+	0    -1   -1   0   
+$EndComp
+Text GLabel 6090 4710 1    50   Input ~ 0
+IND3
+Wire Wire Line
+	6140 4810 6090 4810
+Wire Wire Line
+	6090 4810 6090 4710
+Wire Wire Line
+	6440 5010 6440 5060
+Wire Wire Line
+	6440 5060 5790 5060
+Connection ~ 5790 5060
+Wire Wire Line
+	6440 4610 6440 4510
+Wire Wire Line
+	6440 4210 6440 4110
+Wire Wire Line
+	6440 3810 6440 3760
+Connection ~ 6440 3760
+Wire Wire Line
+	6440 3760 7090 3760
+$Comp
+L dk_Transistors-Bipolar-BJT-Single:BC846B_215 Q4
+U 1 1 5E2C1BCD
+P 6990 4810
+F 0 "Q4" H 6840 5010 60  0000 L CNN
+F 1 "PMBT3904" V 7215 4610 60  0000 L CNN
+F 2 "digikey-footprints:SOT-23-3" H 7190 5010 60  0001 L CNN
+F 3 "" H 7190 5110 60  0001 L CNN
+F 4 "PMBT3904,215" H 7190 5310 60  0001 L CNN "MPN"
+F 5 "Discrete Semiconductor Products" H 7190 5410 60  0001 L CNN "Category"
+F 6 "Transistors - Bipolar (BJT) - Single" H 7190 5510 60  0001 L CNN "Family"
+F 7 "TRANS NPN 40V 0.2A SOT23" H 7190 5810 60  0001 L CNN "Description"
+F 8 "Nexperia USA Inc." H 7190 5910 60  0001 L CNN "Manufacturer"
+F 9 "Active" H 7190 6010 60  0001 L CNN "Status"
+	1    6990 4810
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R14
+U 1 1 5E2C1C41
+P 7090 4360
+F 0 "R14" V 7090 4360 50  0000 C CNN
+F 1 "150R" V 6965 4360 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 7020 4360 50  0001 C CNN
+F 3 "~" H 7090 4360 50  0001 C CNN
+	1    7090 4360
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D4
+U 1 1 5E2C1CB1
+P 7090 3960
+F 0 "D4" H 7140 4060 50  0000 R CNN
+F 1 "LED_YELLOW" H 7260 3810 50  0000 R CNN
+F 2 "LED_SMD:LED_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 7090 3960 50  0001 C CNN
+F 3 "~" H 7090 3960 50  0001 C CNN
+	1    7090 3960
+	0    -1   -1   0   
+$EndComp
+Text GLabel 6740 4710 1    50   Input ~ 0
+IND4
+Wire Wire Line
+	6790 4810 6740 4810
+Wire Wire Line
+	6740 4810 6740 4710
+Wire Wire Line
+	7090 4610 7090 4510
+Wire Wire Line
+	7090 4210 7090 4110
+Wire Wire Line
+	7090 5010 7090 5060
+Wire Wire Line
+	7090 5060 6440 5060
+Connection ~ 6440 5060
+Wire Wire Line
+	7090 3810 7090 3760
+Connection ~ 7090 3760
+Wire Wire Line
+	7090 3760 7740 3760
+$Comp
+L dk_Transistors-Bipolar-BJT-Single:BC846B_215 Q5
+U 1 1 5E2D59A2
+P 7640 4810
+F 0 "Q5" H 7490 5010 60  0000 L CNN
+F 1 "PMBT3904" V 7865 4610 60  0000 L CNN
+F 2 "digikey-footprints:SOT-23-3" H 7840 5010 60  0001 L CNN
+F 3 "" H 7840 5110 60  0001 L CNN
+F 4 "PMBT3904,215" H 7840 5310 60  0001 L CNN "MPN"
+F 5 "Discrete Semiconductor Products" H 7840 5410 60  0001 L CNN "Category"
+F 6 "Transistors - Bipolar (BJT) - Single" H 7840 5510 60  0001 L CNN "Family"
+F 7 "TRANS NPN 40V 0.2A SOT23" H 7840 5810 60  0001 L CNN "Description"
+F 8 "Nexperia USA Inc." H 7840 5910 60  0001 L CNN "Manufacturer"
+F 9 "Active" H 7840 6010 60  0001 L CNN "Status"
+	1    7640 4810
+	1    0    0    -1  
+$EndComp
+Text GLabel 7390 4710 1    50   Input ~ 0
+IND5
+$Comp
+L Device:R R15
+U 1 1 5E2D5B70
+P 7740 4360
+F 0 "R15" V 7740 4360 50  0000 C CNN
+F 1 "2K" V 7615 4360 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 7670 4360 50  0001 C CNN
+F 3 "~" H 7740 4360 50  0001 C CNN
+	1    7740 4360
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D5
+U 1 1 5E2D6262
+P 7740 3960
+F 0 "D5" H 7790 4060 50  0000 R CNN
+F 1 "LED_GREEN" H 7910 3810 50  0000 R CNN
+F 2 "LED_SMD:LED_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 7740 3960 50  0001 C CNN
+F 3 "~" H 7740 3960 50  0001 C CNN
+	1    7740 3960
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7740 3760 7740 3810
+Wire Wire Line
+	7740 4510 7740 4610
+Wire Wire Line
+	7740 4110 7740 4210
+Wire Wire Line
+	7440 4810 7390 4810
+Wire Wire Line
+	7390 4810 7390 4710
+Wire Wire Line
+	7740 5010 7740 5060
+Wire Wire Line
+	7740 5060 7090 5060
+Connection ~ 7090 5060
+$Comp
+L dk_Transistors-Bipolar-BJT-Single:BC846B_215 Q6
+U 1 1 5E2E6BF8
+P 8290 4810
+F 0 "Q6" H 8140 5010 60  0000 L CNN
+F 1 "PMBT3904" V 8515 4610 60  0000 L CNN
+F 2 "digikey-footprints:SOT-23-3" H 8490 5010 60  0001 L CNN
+F 3 "" H 8490 5110 60  0001 L CNN
+F 4 "PMBT3904,215" H 8490 5310 60  0001 L CNN "MPN"
+F 5 "Discrete Semiconductor Products" H 8490 5410 60  0001 L CNN "Category"
+F 6 "Transistors - Bipolar (BJT) - Single" H 8490 5510 60  0001 L CNN "Family"
+F 7 "TRANS NPN 40V 0.2A SOT23" H 8490 5810 60  0001 L CNN "Description"
+F 8 "Nexperia USA Inc." H 8490 5910 60  0001 L CNN "Manufacturer"
+F 9 "Active" H 8490 6010 60  0001 L CNN "Status"
+	1    8290 4810
+	1    0    0    -1  
+$EndComp
+$Comp
+L dk_Transistors-Bipolar-BJT-Single:BC846B_215 Q7
+U 1 1 5E2E6C7E
+P 8940 4810
+F 0 "Q7" H 8790 5010 60  0000 L CNN
+F 1 "PMBT3904" V 9165 4610 60  0000 L CNN
+F 2 "digikey-footprints:SOT-23-3" H 9140 5010 60  0001 L CNN
+F 3 "" H 9140 5110 60  0001 L CNN
+F 4 "PMBT3904,215" H 9140 5310 60  0001 L CNN "MPN"
+F 5 "Discrete Semiconductor Products" H 9140 5410 60  0001 L CNN "Category"
+F 6 "Transistors - Bipolar (BJT) - Single" H 9140 5510 60  0001 L CNN "Family"
+F 7 "TRANS NPN 40V 0.2A SOT23" H 9140 5810 60  0001 L CNN "Description"
+F 8 "Nexperia USA Inc." H 9140 5910 60  0001 L CNN "Manufacturer"
+F 9 "Active" H 9140 6010 60  0001 L CNN "Status"
+	1    8940 4810
+	1    0    0    -1  
+$EndComp
+$Comp
+L dk_Transistors-Bipolar-BJT-Single:BC846B_215 Q8
+U 1 1 5E2E6D06
+P 9590 4810
+F 0 "Q8" H 9440 5010 60  0000 L CNN
+F 1 "PMBT3904" V 9815 4610 60  0000 L CNN
+F 2 "digikey-footprints:SOT-23-3" H 9790 5010 60  0001 L CNN
+F 3 "" H 9790 5110 60  0001 L CNN
+F 4 "PMBT3904,215" H 9790 5310 60  0001 L CNN "MPN"
+F 5 "Discrete Semiconductor Products" H 9790 5410 60  0001 L CNN "Category"
+F 6 "Transistors - Bipolar (BJT) - Single" H 9790 5510 60  0001 L CNN "Family"
+F 7 "TRANS NPN 40V 0.2A SOT23" H 9790 5810 60  0001 L CNN "Description"
+F 8 "Nexperia USA Inc." H 9790 5910 60  0001 L CNN "Manufacturer"
+F 9 "Active" H 9790 6010 60  0001 L CNN "Status"
+	1    9590 4810
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R16
+U 1 1 5E2E7066
+P 8390 4360
+F 0 "R16" V 8390 4360 50  0000 C CNN
+F 1 "2K" V 8265 4360 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 8320 4360 50  0001 C CNN
+F 3 "~" H 8390 4360 50  0001 C CNN
+	1    8390 4360
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R R17
+U 1 1 5E2E70E6
+P 9040 4360
+F 0 "R17" V 9040 4360 50  0000 C CNN
+F 1 "2K" V 8915 4360 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 8970 4360 50  0001 C CNN
+F 3 "~" H 9040 4360 50  0001 C CNN
+	1    9040 4360
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R R18
+U 1 1 5E2E7168
+P 9690 4360
+F 0 "R18" V 9690 4360 50  0000 C CNN
+F 1 "2K" V 9565 4360 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 9620 4360 50  0001 C CNN
+F 3 "~" H 9690 4360 50  0001 C CNN
+	1    9690 4360
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D6
+U 1 1 5E2E7280
+P 8390 3960
+F 0 "D6" H 8440 4060 50  0000 R CNN
+F 1 "LED_GREEN" H 8560 3810 50  0000 R CNN
+F 2 "LED_SMD:LED_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 8390 3960 50  0001 C CNN
+F 3 "~" H 8390 3960 50  0001 C CNN
+	1    8390 3960
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED D7
+U 1 1 5E2E7306
+P 9040 3960
+F 0 "D7" H 9090 4060 50  0000 R CNN
+F 1 "LED_GREEN" H 9210 3810 50  0000 R CNN
+F 2 "LED_SMD:LED_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 9040 3960 50  0001 C CNN
+F 3 "~" H 9040 3960 50  0001 C CNN
+	1    9040 3960
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED D8
+U 1 1 5E2E738E
+P 9690 3960
+F 0 "D8" H 9740 4060 50  0000 R CNN
+F 1 "LED_GREEN" H 9860 3810 50  0000 R CNN
+F 2 "LED_SMD:LED_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 9690 3960 50  0001 C CNN
+F 3 "~" H 9690 3960 50  0001 C CNN
+	1    9690 3960
+	0    -1   -1   0   
+$EndComp
+Text GLabel 8040 4710 1    50   Input ~ 0
+IND6
+Text GLabel 8690 4710 1    50   Input ~ 0
+IND7
+Text GLabel 9340 4710 1    50   Input ~ 0
+IND8
+Wire Wire Line
+	8040 4710 8040 4810
+Wire Wire Line
+	8040 4810 8090 4810
+Wire Wire Line
+	8690 4710 8690 4810
+Wire Wire Line
+	8690 4810 8740 4810
+Wire Wire Line
+	9340 4710 9340 4810
+Wire Wire Line
+	9340 4810 9390 4810
+Wire Wire Line
+	8390 5010 8390 5060
+Wire Wire Line
+	8390 5060 7740 5060
+Connection ~ 7740 5060
+Wire Wire Line
+	9040 5010 9040 5060
+Wire Wire Line
+	9040 5060 8390 5060
+Connection ~ 8390 5060
+Wire Wire Line
+	9690 5010 9690 5060
+Wire Wire Line
+	9690 5060 9040 5060
+Connection ~ 9040 5060
+Wire Wire Line
+	7740 3760 8390 3760
+Connection ~ 7740 3760
+Wire Wire Line
+	8390 4610 8390 4510
+Wire Wire Line
+	8390 4210 8390 4110
+Wire Wire Line
+	8390 3810 8390 3760
+Connection ~ 8390 3760
+Wire Wire Line
+	8390 3760 9040 3760
+Wire Wire Line
+	9040 4610 9040 4510
+Wire Wire Line
+	9040 4210 9040 4110
+Wire Wire Line
+	9040 3810 9040 3760
+Connection ~ 9040 3760
+Wire Wire Line
+	9040 3760 9690 3760
+Wire Wire Line
+	9690 3760 9690 3810
+Wire Wire Line
+	9690 4510 9690 4610
+Wire Wire Line
+	9690 4110 9690 4210
+Text Notes 7200 3600 0    67   Italic 0
+LED BAR
+Wire Notes Line
+	9950 5200 4600 5200
+Wire Notes Line
+	4600 5200 4600 3650
+Wire Notes Line
+	4600 3650 9950 3650
+Wire Notes Line
+	9950 3650 9950 5200
+Wire Wire Line
+	5140 3760 5140 3610
+Connection ~ 5140 3760
+Wire Wire Line
+	5700 3050 7200 3050
+Wire Wire Line
+	7200 2900 7200 3050
+Connection ~ 7200 3050
+Wire Wire Line
+	7200 3050 8000 3050
+Wire Wire Line
+	7200 3050 7200 3160
+$EndSCHEMATC

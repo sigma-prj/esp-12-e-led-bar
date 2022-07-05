@@ -1,0 +1,4 @@
+(fp_lib_table
+  (lib (name custom_footprints)(type KiCad)(uri ${KIPRJMOD}/lib/footprints)(options "")(descr "Custom footprints for ESP Traffic Monitor project"))
+  (lib (name custom_bitmaps)(type KiCad)(uri ${KIPRJMOD}/lib/bitmaps)(options "")(descr "Custom bitmaps for ESP Traffic Monitor project"))
+)
