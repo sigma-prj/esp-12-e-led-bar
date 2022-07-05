@@ -11,8 +11,10 @@ Requirements and Dependencies
 
 Project is built using KiCad version 5.1.9
 
-Typical Connection Schema
+Schema Design
 -----------------------------
+
+ESP8266 module has quite limited amount of GPIO output pins which could be used to control set of LEDs. To overcome this problem we can use Shift Register 74HC595 chip which can play a role of serial to parallel converter. This way, we can allocate just 3 pins from ESP module to control any amount of LED - as 74HC595 Shift Registers can be cascaded into array using QH' pin. Under current design there is need to control just 8 LEDs, so one single 74HC595 register should be sufficient for these purposes.
 
 The following connection schema is used to drive 8 LEDs:
 
@@ -22,7 +24,11 @@ In case of application needs to be flashed into ESP chip - the corresponding GPI
 and in order to run application this pin needs to be pulled up.
 Switch between GPIO 0 'pull up' and 'pull down' state can be done using single jumper placed to JMPR_EXEC either to JMPR_FLASH connector.
 
-Sample Application for PCB Testing
+The main purpose to drive LEDs on a separate 5V rail - to do not put extra load on AMS1117-3.3 module. Also green LEDs do have quite large voltage drop which can be more than 2V. In case of LEDs will be driven by 3.3V then slight difference in LEDs voltage drop can have increased current value deviation from expected value (hence deviation in brightness). This happens when the same value is used for all current limiting resistors. Driving LEDs by 5V rail will make this deviation negligible.
+
+This schema also has some room for optimization as amount of NPN transistors can be reduced from 8 to 3 which currently are used as a voltage level shift from 3.3V to 5V to drive LEDs. New PCBs revisions would include this change, but for now it can be kept for you to optimize as a practice exercise.
+
+Sample ESP8266 Application for PCB Testing
 -----------------------------
 
 Once schema is assembled the following sample application can be used to test PCB.
@@ -523,7 +529,7 @@ Section 8 -- Interpretation.
 Creative Commons is not a party to its public
 licenses. Notwithstanding, Creative Commons may elect to apply one of
 its public licenses to material it publishes and in those instances
-will be considered the “Licensor.” The text of the Creative Commons
+will be considered the Â“Licensor.Â” The text of the Creative Commons
 public licenses is dedicated to the public domain under the CC0 Public
 Domain Dedication. Except for the limited purpose of indicating that
 material is shared under a Creative Commons public license or as
